@@ -1,0 +1,203 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: #fff;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 28rem;
+    border-right: 1px solid #ccc;
+    height: 100vh;
+    overflow-y: auto;
+
+    .logo {
+      text-align: center;
+      padding: 15px 0;    
+      border-bottom: 1px solid #ccc;
+
+      img {
+        max-width: 25rem;
+        display: inline-block;
+      }
+    }
+  }
+
+  .content {
+    width: calc(100% - 28rem);
+    background: #f6f6f6;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .content-w-settings {
+    display: flex;    
+    flex-wrap: wrap;
+
+    .settings {
+      width: 28rem;
+      border-left: 1px solid #ccc;
+      background: #fff;
+    }
+
+    .list {
+      width: calc(100% - 28rem);
+      height: 100vh;
+      overflow-y: auto;
+    }
+  }
+
+.navbar {
+  flex:1;
+  border-bottom: 1px solid #ccc;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 20px 0 0 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+
+      a {
+        display: block;
+        font-size: 1.6rem;
+        line-height: 1.2;
+        padding: 0.8rem 1.5rem;
+        color: #000;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        &.active {
+          font-weight: bold;
+          color: #03bdff;
+        }
+      }
+    }
+  }
+}
+
+.settings {
+  padding: 15px 15px 25px 15px;
+
+  &__caption {
+    display: block;
+    width: 100%;
+    font-size: 2.4rem;
+    padding: 0;
+    margin: 15px 0;
+  }
+
+  .form-field {
+    margin: 0 0 15px 0;
+
+    label {
+      display: block;
+      width: 100%;
+      font-size: 1.4rem;
+      padding: 0;
+      margin: 0 0 5px 0;
+    }
+
+    input {
+      width: 100%;
+      margin: 0;
+      padding: 5px;
+      font-size: 1.4rem;
+      display: block;
+      border:1px solid #ccc;
+    }
+  }
+
+  .form-save-btn {
+    width: 100%;
+    display: block;
+    background: rgb(0, 106, 206);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border:none;
+    margin: 0;
+    outline: none !important;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.component-card {  
+  padding: 15px;
+
+  &__name {
+    font-size: 2.4rem;
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+    font-weight: bold;
+  }
+
+  &__view {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 10px;
+  }
+
+  &__source {
+    display: flex;
+    height: 300px;    
+    gap:10px;
+    padding: 10px 0;
+  }
+    &__source-part {
+      flex:1;
+
+      textarea {
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        resize: none;
+        border: 1px solid #ccc;
+      }
+    }
+}

@@ -1,25 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { IRoute, routes } from './app/Routes';
+import { Layout } from './app/Types';
+import Navbar from './components/Layout/Navbar';
+import AppState from './context/AppState';
+import Config from './components/Layout/Config';
 
 function App() {
+
+  const layoutType = (route: IRoute) => {
+    let layout;
+    switch (route.layout) {
+      case Layout.Default:
+        layout = (
+          <div className="page">
+            <Config />
+            <Navbar />
+            <route.component />
+          </div>
+        )
+        break;
+
+      default:
+        layout = (
+          <>
+            <Navbar />
+            <route.component />
+          </>
+        )
+        break;
+    }
+    return layout;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppState>        
+        <BrowserRouter>      
+          <Switch>            
+            {routes.map((route: IRoute) => {   
+              return <Route
+                key={route.path}
+                exact={route.exact}
+                path={route.path}
+              >
+                {layoutType(route)}
+              </Route>
+            })}
+          </Switch>      
+        </BrowserRouter>
+      </AppState>
   );
 }
 
